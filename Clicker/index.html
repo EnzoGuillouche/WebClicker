@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clicker</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 <body>
-    <label id="counter">0</label>
-    <div id="btn">
-        <button id="increase" class="button">Increase</button>
+     <div id="theme">
+        <div id="black-theme">
+            <input id="black-theme-checkbox" type="checkbox" />
+            <label>Black theme</label>
+        </div>
+        <div id="white-theme">
+            <input id="white-theme-checkbox" type="checkbox" />
+            <label>White theme</label>
+        </div>
     </div>
+
+    <div id="sidebar">
+        <h2 id="power-ups-content">Power-ups</h2>
+        <p id="power-ups-content">...</p>
+    </div>
+
+    <label id="counter">0</label>
+    <button id="increase">Increase</button>
     
     <script src="index.js"></script>
 </body>
