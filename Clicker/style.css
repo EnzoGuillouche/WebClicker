@@ -47,8 +47,8 @@ body.black {
 #sidebar {
     position: fixed;
     top: 0;
-    left: -250px; /* Initially hidden */
-    width: 250px;
+    left: -300px; /* Initially hidden */
+    width: 300px;
     height: 100%;
     padding: 20px;
     transition: left 0.3s ease-in-out;
@@ -65,6 +65,19 @@ body.black {
     font-size: 1.25em;
     border-radius: 15px;
     cursor: pointer;
+}
+
+#auto-click-box {
+    width: 175px;
+    padding-top: 10px;
+    border: 2px solid #777777;
+    text-align: center;
+}
+#click-increase-box{
+    width: 175px;
+    padding-top: 10px;
+    border: 2px solid #777777;
+    text-align: center;
 }
 
 #increase {

@@ -37,7 +37,6 @@ blackThemeCheckbox.addEventListener("change", () => {
 // CLICKER
 
 let counter = 0;
-let click = 1;
 const displayedCounter = document.getElementById(`counter`);
 const increase = document.getElementById(`increase`);
 
@@ -69,18 +68,51 @@ document.addEventListener("mousemove", (event) => {
 // POWER-UPS
 
 let autoClick = 0;
-const autoClickPu = document.getElementById(`auto-click`);
-const clickIncreasePu = document.getElementById(`click-increase`);
+const autoClickPu = document.getElementById(`auto-click-box`);
+let autoClickCost = 20;
+let displayedAutoClickCost = document.getElementById(`auto-click-cost`);
+let click = 1;
+const clickIncreasePu = document.getElementById(`click-increase-box`);
+let clickIncreaseCost = 3;
+let displayedClickIncreaseCost = document.getElementById(`click-increase-cost`);
 
 autoClickPu.onclick = function(){
-    autoClick = autoClick > 5 ? autoClick * 2 : ++autoClick;
+    if (autoClickCost <= counter) {
+        autoClick = autoClick > 5 ? autoClick * 2 : ++autoClick;
+        counter -= autoClickCost;
+        autoClickCost *= 2;
+    }
 }
 
 clickIncreasePu.onclick = function(){
-    click = click > 5 ? click * 2 : ++click;
+    if (clickIncreaseCost <= counter) {
+        click = click > 5 ? click * 2 : ++click;
+        counter -= clickIncreaseCost;
+        clickIncreaseCost *= 2;
+    }
+}
+
+function displayPowerUpsCosts(){
+    displayedAutoClickCost.textContent = autoClickCost;
+    displayedClickIncreaseCost.textContent = clickIncreaseCost;
+}
+
+function displayPowerUps(){
+    if (counter < autoClickCost) {
+        autoClickPu.style.backgroundColor = `#777777`;
+    } else {
+        autoClickPu.style.backgroundColor = `#333333`;
+    }
+    if (counter < clickIncreaseCost) {
+        clickIncreasePu.style.backgroundColor = `#777777`;
+    } else {
+        clickIncreasePu.style.backgroundColor = `#333333`;
+    }
+    displayPowerUpsCosts();
 }
 
 setInterval(() => {
     counter += autoClick;
     displayCounter();
+    displayPowerUps();
 }, 1000);
