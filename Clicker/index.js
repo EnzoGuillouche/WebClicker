@@ -23,7 +23,6 @@ whiteThemeCheckbox.addEventListener("change", () => {
     setTheme();
 });
 
-// Event listener to toggle theme when black checkbox is changed
 blackThemeCheckbox.addEventListener("change", () => {
     if (blackThemeCheckbox.checked) {
         currentTheme = "black";
@@ -101,12 +100,12 @@ function displayPowerUps(){
     if (counter < autoClickCost) {
         autoClickPu.style.backgroundColor = `#777777`;
     } else {
-        autoClickPu.style.backgroundColor = `#333333`;
+        autoClickPu.style.backgroundColor = currentTheme === `white` ? `#333333`: `white`;
     }
     if (counter < clickIncreaseCost) {
         clickIncreasePu.style.backgroundColor = `#777777`;
     } else {
-        clickIncreasePu.style.backgroundColor = `#333333`;
+        clickIncreasePu.style.backgroundColor = currentTheme === `white` ? `#333333`: `white`;
     }
     displayPowerUpsCosts();
 }
