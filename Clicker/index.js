@@ -1,5 +1,5 @@
 // THEME
-let currentTheme = localStorage.getItem("theme") || "white"; 
+let currentTheme = "white"; 
 
 const whiteThemeCheckbox = document.getElementById("white-theme-checkbox");
 const blackThemeCheckbox = document.getElementById("black-theme-checkbox");
@@ -18,7 +18,7 @@ whiteThemeCheckbox.addEventListener("change", () => {
         currentTheme = "white";
         document.body.classList.remove("black");
         document.body.classList.add("white");
-        blackThemeCheckbox.checked = false; 
+        blackThemeCheckbox.checked = false;
     }
     setTheme();
 });
@@ -36,30 +36,51 @@ blackThemeCheckbox.addEventListener("change", () => {
 
 // CLICKER
 
-let counter = localStorage.getItem("counter");
+let counter = 0;
+let click = 1;
 const displayedCounter = document.getElementById(`counter`);
 const increase = document.getElementById(`increase`);
 
 function displayCounter(){
-    localStorage.setItem("counter", counter);
     displayedCounter.textContent = counter;
 }
 
-displayCounter();
-
 increase.onclick = function(){
-    counter++;
+    counter += click;
     displayCounter();
 }
 
 // SIDEBAR
 
 const sidebar = document.getElementById("sidebar");
+let sidebarState = false;
 
 document.addEventListener("mousemove", (event) => {
     if (event.clientX < 50){
         sidebar.classList.add("active");
-    } else {
+        sidebarState = true;
+    } 
+    if (event.clientX > 300 && sidebarState === true) {
         sidebar.classList.remove("active");
+        sidebarState = false;
     }
 });
+
+// POWER-UPS
+
+let autoClick = 0;
+const autoClickPu = document.getElementById(`auto-click`);
+const clickIncreasePu = document.getElementById(`click-increase`);
+
+autoClickPu.onclick = function(){
+    autoClick = autoClick > 5 ? autoClick * 2 : ++autoClick;
+}
+
+clickIncreasePu.onclick = function(){
+    click = click > 5 ? click * 2 : ++click;
+}
+
+setInterval(() => {
+    counter += autoClick;
+    displayCounter();
+}, 1000);

@@ -23,7 +23,7 @@ body.black {
     color: #ffffff;
 } body.black #increase:hover {
     background-color: #ffffff;
-    color: #333333;
+    background: #333333;
 }
 
 #theme {
@@ -52,14 +52,19 @@ body.black {
     height: 100%;
     padding: 20px;
     transition: left 0.3s ease-in-out;
+    text-align: center;
 } #sidebar.active {
     left: 0;
 } #sidebar h2 {
     margin-top: 0;
 }
 
-#power-ups-content {
-    text-align: center;
+.power-ups {
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 1.25em;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 #increase {
